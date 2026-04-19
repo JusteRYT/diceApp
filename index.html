@@ -12,7 +12,7 @@
         #ui { height: 100vh; display: flex; flex-direction: column; }
         
         /* Верхняя панель выбора */
-        #controls { padding: 15px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; background: rgba(255,255,255,0.05); }
+        #controls { padding: 15px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; background: rgba(255,255,255,0.05); }
         .dice-btn { background: rgba(40, 40, 40, 0.8); border: 1px solid #444; color: white; padding: 12px 0; border-radius: 8px; font-size: 11px; font-weight: 800; cursor: pointer; position: relative; font-family: 'JetBrains Mono'; }
         .dice-btn .count { position: absolute; top: -5px; right: -5px; background: var(--primary); width: 18px; height: 18px; border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.2s; }
         .dice-btn.active .count { opacity: 1; transform: scale(1.1); }
@@ -52,6 +52,7 @@
             <button class="dice-btn" onclick="app.add('d10')">D10<div class="count">0</div></button>
             <button class="dice-btn" onclick="app.add('d12')">D12<div class="count">0</div></button>
             <button class="dice-btn" onclick="app.add('d20')">D20<div class="count">0</div></button>
+            <button class="dice-btn" onclick="app.add('d100')">D100<div class="count">0</div></button>
         </div>
 
         <div id="spacer"></div>
@@ -72,7 +73,7 @@
         class DiceApp {
             constructor() {
                 this.selectedDice = [];
-                this.counts = { d4:0, d6:0, d8:0, d10:0, d12:0, d20:0 };
+                this.counts = { d4:0, d6:0, d8:0, d10:10, d12:0, d20:0, d100:0 };
                 this.isRolling = false;
             }
 
@@ -150,7 +151,7 @@
 
             reset() {
                 this.selectedDice = [];
-                this.counts = { d4:0, d6:0, d8:0, d10:0, d12:0, d20:0 };
+                this.counts = { d4:0, d6:0, d8:0, d10:0, d12:0, d20:0, d100:0 };
                 document.getElementById('total').innerText = "0";
                 document.getElementById('log').innerHTML = "";
                 document.getElementById('crit-msg').innerText = "";
